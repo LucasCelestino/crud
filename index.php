@@ -8,10 +8,36 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>CRUD</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="container p-5">
+    <table class="table">
+    <a href="add-user.php" class="btn btn-success mb-4 mr-2">Adicionar Novo Usuário</a>
+    <a href="delete-all.php" class="btn btn-danger mb-4">Deletar Todos os Registros</a>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-bottom">
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>
+          <a href="#" class="text-success mr-2">Editar</a>
+          <a href="#" class="text-danger">Excluir</a>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
