@@ -23,7 +23,7 @@ $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container p-5">
     <table class="table">
     <a href="cadastro.php" class="btn btn-success mb-4 mr-2">Adicionar Novo Usuário</a>
-    <a href="delete-all.php" class="btn btn-danger mb-4">Deletar Todos os Registros</a>
+    <a href="db/delete-all.php" class="btn btn-danger mb-4">Deletar Todos os Registros</a>
     <thead class="thead-dark">
       <tr>
         <th scope="col">Nome</th>
