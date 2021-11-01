@@ -1,21 +1,16 @@
 <?php
 require("connection.php");
 
-if(isset($_GET['id']))
+
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+$stmt = Connection::getConnection()->prepare("SELECT * FROM users WHERE id = :id");
+$stmt->bindValue(':id', $id);
+
+if($stmt->execute())
 {
-    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
-    $stmt = Connection::getConnection()->prepare("SELECT * FROM users WHERE id = :id");
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
-
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
-else
-{
-    header("Location: index.php");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -27,14 +22,14 @@ else
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>CRUD</title>
+    <title>CRUD - Editar</title>
   </head>
   <body>
     <div class="container p-5">
     <h2>Cadastrar Novo Usuário</h2>
     <?php if(isset($_GET['success'])): ?>
     <div class="alert alert-success" role="alert">
-    Usuário adicionado com sucesso!
+    Usuário editado com sucesso!
     </div>
     <?php endif; ?>
     <?php if(isset($_GET['errorEmail'])): ?>
@@ -42,7 +37,7 @@ else
     E-mail informado já cadastrado.
     </div>
     <?php endif; ?>
-    <form method="POST" action="db/add-user.php">
+    <form method="POST" action="db/edit-user.php">
     <div class="form-group">
         <label for="name">Nome</label>
         <input type="text" name="name" value="<?=$user['name'];?>" class="form-control" id="name" placeholder="Digite o nome do usuário...">
@@ -59,7 +54,8 @@ else
         <label for="telefone">Telefone</label>
         <input type="text" name="telefone" value="<?=$user['phone'];?>" class="form-control" id="telefone" placeholder="Digite o telefone do usuário...">
     </div>
-    <input type="submit" class="btn btn-success" value="Cadastrar">
+    <input type="hidden" name="id" value="<?=$user['id'];?>">
+    <input type="submit" class="btn btn-success" value="Editar">
     <a href="index.php" class="ml-2">Voltar para a Home</a>
     </form>
     </div>
