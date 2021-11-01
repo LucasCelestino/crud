@@ -1,3 +1,12 @@
+<?php
+require("connection.php");
+
+$stmt = Connection::getConnection()->prepare("SELECT * FROM users");
+$stmt->execute();
+
+$allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -25,16 +34,30 @@
       </tr>
     </thead>
     <tbody>
+      <?php if(isset($allUsers) && !empty($allUsers)): ?>
+      <?php foreach ($allUsers as $user): ?>
       <tr class="border-bottom">
+        <td><?=$user['name'];?></td>
+        <td><?=$user['email'];?></td>
+        <td><?=$user['address'];?></td>
+        <td><?=$user['phone'];?></td>
+        <td>
+          <a href="edit.php?id=<?=$user['id'];?>" class="text-success mr-2">Editar</a>
+          <a href="delete.php?id=<?=$user['id'];?>" class="text-danger">Excluir</a>
+        </td>
+      </tr>
+      <?php endforeach; ?>
+      <?php else: ?>
+        <tr class="border-bottom">
         <td>-</td>
         <td>-</td>
         <td>-</td>
         <td>-</td>
         <td>
-          <a href="#" class="text-success mr-2">Editar</a>
-          <a href="#" class="text-danger">Excluir</a>
+          -
         </td>
       </tr>
+      <?php endif; ?>
     </tbody>
     </table>
     </div>
