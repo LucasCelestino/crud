@@ -13,7 +13,7 @@
   <body>
     <div class="container p-5">
     <table class="table">
-    <a href="add-user.php" class="btn btn-success mb-4 mr-2">Adicionar Novo Usuário</a>
+    <a href="cadastro.php" class="btn btn-success mb-4 mr-2">Adicionar Novo Usuário</a>
     <a href="delete-all.php" class="btn btn-danger mb-4">Deletar Todos os Registros</a>
     <thead class="thead-dark">
       <tr>

@@ -13,24 +13,34 @@
   <body>
     <div class="container p-5">
     <h2>Cadastrar Novo Usuário</h2>
-    <form>
+    <?php if(isset($_GET['success'])): ?>
+    <div class="alert alert-success" role="alert">
+    Usuário adicionado com sucesso!
+    </div>
+    <?php endif; ?>
+    <?php if(isset($_GET['errorEmail'])): ?>
+    <div class="alert alert-danger" role="alert">
+    E-mail informado já cadastrado.
+    </div>
+    <?php endif; ?>
+    <form method="POST" action="db/add-user.php">
     <div class="form-group">
-        <label for="exampleInputEmail1">Nome</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o nome do usuário...">
+        <label for="name">Nome</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="Digite o nome do usuário...">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o email do usuário...">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control" id="email" placeholder="Digite o email do usuário...">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Endereço</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o endereço do usuário...">
+        <label for="endereco">Endereço</label>
+        <input type="text" name="endereco" class="form-control" id="endereco" placeholder="Digite o endereço do usuário...">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Telefone</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o telefone do usuário...">
+        <label for="telefone">Telefone</label>
+        <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone do usuário...">
     </div>
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <input type="submit" class="btn btn-success" value="Cadastrar">
     <a href="index.php" class="ml-2">Voltar para a Home</a>
     </form>
     </div>
