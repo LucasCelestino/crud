@@ -43,7 +43,7 @@ $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td><?=$user['phone'];?></td>
         <td>
           <a href="edit.php?id=<?=$user['id'];?>" class="text-success mr-2">Editar</a>
-          <a href="delete.php?id=<?=$user['id'];?>" class="text-danger">Excluir</a>
+          <a href="db/delete-user.php?id=<?=$user['id'];?>" class="text-danger">Excluir</a>
         </td>
       </tr>
       <?php endforeach; ?>
